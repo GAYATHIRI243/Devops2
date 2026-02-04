@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { jsPDF } from "jspdf";
 import "./App.css";
 
-/* ========= CONFIG ========= */
+
 const config = {
   Bus: { price: 350, layout: "sleeper" },
   Train: { price: 220, layout: "seat" },
@@ -32,7 +32,7 @@ export default function App() {
 
   const cfg = config[service];
   const total = selected.length * cfg.price;
-  /* ================= RESET FORM ================= */
+
 
 const resetForm = () => {
   setName("");
@@ -42,7 +42,7 @@ const resetForm = () => {
   setSelected([]);
 };
 
-  /* ================= HISTORY LOAD ================= */
+  
 
   const loadHistory = async () => {
     try {
@@ -54,7 +54,7 @@ const resetForm = () => {
     }
   };
 
-  /* ================= SEAT TOGGLE ================= */
+  
 
   const toggle = (id) => {
     setSelected(prev =>
@@ -64,7 +64,7 @@ const resetForm = () => {
     );
   };
 
-  /* ================= PDF ================= */
+  
 
   const downloadPDF = () => {
     try {
@@ -93,8 +93,6 @@ const resetForm = () => {
       console.log(e);
     }
   };
-
-  /* ================= BACKEND SAVE ================= */
 
   const saveBooking = async () => {
     try {
@@ -131,7 +129,7 @@ const resetForm = () => {
     }
   };
 
-  /* ================= LOGIN ================= */
+  
 
   if (page === "login") {
     return (
@@ -161,7 +159,7 @@ const resetForm = () => {
     );
   }
 
-  /* ================= BOOKING PAGE ================= */
+  
 
   if (page === "select") {
     return (
@@ -178,7 +176,7 @@ const resetForm = () => {
 
           <h2>Travel Booking</h2>
 
-          {/* Tabs */}
+          
     <div className="tabs">
   {Object.keys(config).map(s => (
     <button
@@ -195,7 +193,7 @@ const resetForm = () => {
 </div>
 
 
-          {/* Inputs */}
+          
           <input className="input" placeholder="Passenger Name"
             value={name} onChange={e=>setName(e.target.value)} />
 
@@ -211,7 +209,7 @@ const resetForm = () => {
           <input className="input" type="date"
             value={date} onChange={e=>setDate(e.target.value)} />
 
-          {/* ===== SEATS ===== */}
+          
 
           <div className="seat-section">
 
@@ -272,7 +270,7 @@ const resetForm = () => {
             Continue Payment
           </button>
 
-          {/* ===== HISTORY ===== */}
+        
 
           <h3>Booking History</h3>
           {history.map(b => (
@@ -286,7 +284,7 @@ const resetForm = () => {
     );
   }
 
-  /* ================= PAYMENT ================= */
+
 
   if (page === "payment") {
     return (
@@ -321,7 +319,7 @@ const resetForm = () => {
     );
   }
 
-  /* ================= SUCCESS ================= */
+
 
   if (page === "success") {
     return (
